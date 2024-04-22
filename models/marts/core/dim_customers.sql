@@ -9,7 +9,7 @@ customers as (select * from {{ ref('stg_customers') }})
     customer_id
     ,min(order_date) as first_order_date
     ,max(order_date) as most_recent_order_date
-    ,count(order_id) as nmber_of_orders
+    ,count(order_id) as number_of_orders
     from orders
     group by 1
 )
@@ -23,7 +23,7 @@ customers as (select * from {{ ref('stg_customers') }})
     , co.most_recent_order_date
     , coalesce(co.number_of_orders, 0) as number_of_orders
     from customers c
-    left join custom_orders co using (customer_id)
+    left join customer_orders co using (customer_id)
 )
 
 select * from final
