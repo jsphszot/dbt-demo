@@ -11,7 +11,7 @@ payments as (
     -- , row_number() over (partition by orderid order by created desc)
     -- , row_number() over (partition by orderid order by id desc)
     , created as payment_at
-    from `dbt-tutorial.stripe.payment`
+    from {{ source('stripe', 'payment') }}
     order by orderid
 )
 select * from payments
