@@ -4,3 +4,4 @@ target/
 dbt_packages/
 logs/
 dbt.exe
+dbt_cloud.yml
